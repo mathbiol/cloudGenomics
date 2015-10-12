@@ -10,8 +10,9 @@ cg=function(){
 cg.dropbox=function(){
     $('<div id="dropData"><h3>DropBox Data</h3></div>').appendTo(document.body)
     var success=function(files){
-        ff=files
-        oquetuquizeres(files)
+        console.log('files object:',files)
+        cg.files=files
+        //oquetuquizeres(files)
     }
 
     options = {
@@ -19,7 +20,7 @@ cg.dropbox=function(){
         // Required. Called when a user selects an item in the Chooser.
         success: function(files) {
             success(files)
-            alert("Here's the file link: " + files[0].link)
+            //alert("Here's the file link: " + files[0].link)
         },
 
         // Optional. Called when the user closes the dialog without selecting a file

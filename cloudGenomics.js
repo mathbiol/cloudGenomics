@@ -1,18 +1,54 @@
-console.log('cloudGenomics :-)!')
-//alert(8)
+console.log('cloudGenomics.js loaded')
 
-console.log('hello outravez')
-cloudGenomics=function(){
-    return "Hello!" //
+cg=function(){
+    // ini
+    console.log('ini')
+    cg.dropbox()
+
 }
-ip = document.createElement('input')
-ip.id="lala"
-document.body.appendChild(ip)
-ip.onkeyup=function(){console.log(ip.value)}
-s=document.createElement('script')
-s.src="https://code.jquery.com/jquery-2.1.4.min.js"
-s.onload=function(){
-    console.log('e agora ja existe:',typeof(jQuery)) // <-- prova que existes
+
+cg.dropbox=function(){
+    $('<div id="dropData"><h3>DropBox Data</h3></div>').appendTo(document.body)
+    var success=function(files){
+        ff=files
+        oquetuquizeres(files)
+    }
+
+    options = {
+
+        // Required. Called when a user selects an item in the Chooser.
+        success: function(files) {
+            success(files)
+            alert("Here's the file link: " + files[0].link)
+        },
+
+        // Optional. Called when the user closes the dialog without selecting a file
+        // and does not include any parameters.
+        cancel: function() {
+
+        },
+
+        // Optional. "preview" (default) is a preview link to the document for sharing,
+        // "direct" is an expiring link to download the contents of the file. For more
+        // information about link types, see Link types below.
+        linkType: "direct", // or "direct"
+
+        // Optional. A value of false (default) limits selection to a single file, while
+        // true enables multiple file selection.
+        multiselect: true, // or true
+
+        // Optional. This is a list of file extensions. If specified, the user will
+        // only be able to select files with these extensions. You may also specify
+        // file types, such as "video" or "images" in the list. For more information,
+        // see File types below. By default, all extensions are allowed.
+        //extensions: ['.fast', '.doc', '.docx'],
+    };
+
+    var button = Dropbox.createChooseButton(options);
+    dropData.appendChild(button);
 }
-console.log('jQuery ainda nao existe:',typeof(jQuery))
-document.head.appendChild(s)
+
+
+$(document).ready(function(){
+    cg()
+})

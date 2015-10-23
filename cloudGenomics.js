@@ -4,7 +4,7 @@ cg=function(){
     // ini
     console.log('ini')
     cg.dropbox()
-
+    cg.connectDNAnexus()
 }
 
 cg.dropbox=function(){
@@ -47,6 +47,17 @@ cg.dropbox=function(){
 
     var button = Dropbox.createChooseButton(options);
     dropData.appendChild(button);
+}
+
+cg.connectDNAnexus=function(){
+    var oauthURL='https://auth.dnanexus.com/oauth2/authorize?client_id=apiserver&response_type=code&redirect_uri=http://localhost:8000/cloudGenomics/'
+    if(!document.getElementById('DnaNexusButton')){
+        $('<h3>DNA Nexus Cloud Genomics</h3><button id="DnaNexusButton">Connect with DNA Nexus</button>').appendTo(document.body)        
+    }
+    DnaNexusButton.onclick=function(){
+        // notice comment on client_id on https://wiki.dnanexus.com/API-Specification-v1.0.0/Authentication
+        location.href=oauthURL
+    }
 }
 
 

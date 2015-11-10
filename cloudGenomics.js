@@ -5,6 +5,21 @@ cg=function(){
     console.log('ini')
     cg.dropbox()
     cg.connectDNAnexus()
+    // look for token
+    var foundIn='localStorage'
+    cg.dnaNexusToken=jmat.urlParms().code // in the search
+    if(!cg.dnaNexusToken){ // then in the localstorage
+        cg.dnaNexusToken = localStorage.dnaNexusToken
+    }else{ // save what was found in the search
+        localStorage.dnaNexusToken=cg.dnaNexusToken
+        foundIn='URL'
+    }
+    if(cg.dnaNexusToken){
+        console.log('token found in '+foundIn+':',cg.dnaNexusToken)
+        // starting DX
+        cg.api = new DX.Api(cg.dnaNexusToken)
+        
+    }
 }
 
 cg.dropbox=function(){

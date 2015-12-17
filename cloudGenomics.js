@@ -65,7 +65,7 @@ cg.dropbox=function(){
 }
 
 cg.connectDNAnexus=function(){
-    var oauthURL='https://auth.dnanexus.com/oauth2/authorize?client_id=mrsa&response_type=code&redirect_uri=https%3A%2F%2Fmathbiol.github.io/cloudGenomics'
+    var oauthURL='https://auth.dnanexus.com/oauth2/authorize?client_id=mrsa&response_type=code&redirect_uri=https%3A%2F%2Fmathbiol.github.io/cloudGenomics/'
     if(!document.getElementById('DnaNexusButton')){
         $('<h3>DNA Nexus Cloud Genomics</h3><button id="DnaNexusButton">Connect with DNA Nexus</button>').appendTo(document.body)        
     }
